@@ -1,0 +1,127 @@
+Message-ID: <14587586.1075849805482.JavaMail.evans@thyme>
+Date: Wed, 20 Dec 2000 02:13:00 -0800 (PST)
+From: rob.gay@enron.com
+To: peter.weidler@enron.com
+Subject: Equity Contribution Agreement
+Mime-Version: 1.0
+Content-Type: text/plain; charset=ANSI_X3.4-1968
+Content-Transfer-Encoding: 7bit
+X-From: Rob G Gay
+X-To: Peter E Weidler
+X-cc: 
+X-bcc: 
+X-Folder: \Randall_Gay_Nov2001\Notes Folders\Sent
+X-Origin: GAY-R
+X-FileName: rgay.nsf
+
+This is the document which controls our base equity contributions and our 
+contingent support.  It is not the final version and is currently being 
+turned to reflect the sponsor's comments from Friday 12/15/00
+---------------------- Forwarded by Rob G Gay/NA/Enron on 12/20/2000 09:49 AM 
+---------------------------
+
+
+"RACITI, Melissa" <melissa.raciti@freshfields.com> on 11/17/2000 07:39:48 PM
+To: acestero@velaw.com, "Adriana Mathias Baptista (E-mail)" 
+<amb@tfts.tozzini.com.br>, af@tozzini.com.br, alejandra.arze@citicorp.com, 
+ameyer@mmso.com.br, "Ana beatriz kesselring" 
+<ana.beatriz.kesselring@bakernet.com>, "Ana Silvia Dias" 
+<ana.silvia.dias@bakernet.com>, "Anabela de Oliveira" 
+<Anabela.DeOliveira@chadbourne.com>, anakarinasouza@mmso.com.br, "Analia 
+Miqueri (BFM&L) (E-mail)" <am@bfmyl.com.ar>, "Anamaria Rosenthal" 
+<anamaria.rosenthal@bakernet.com>, "Andrea Gavino (E-mail)" 
+<Andrea.Gavino@enron.com>, andrea.arze@citicorp.com, "Andreia Almeida" 
+<andreia.almeida@enron.com>, "Andrew Pierrie (E-mail)" 
+<ayp@dentonwildesapte.com>, "Barbara Boehm" <bboeh@opic.gov>, 
+barry.k.pettifor@uk.pwcglobal.com, bbilger@velaw.com, "Beatriz Mello" 
+<beatriz.mello@bakernet.com>, "Blanca Bollom" <blanca.bollom@enron.com>, 
+"Bradley Barta" <bradley.barta@stoneweb.com>, brian.gilbertson@stoneweb.com, 
+"BURKE, Ted (TDB)" <ted.burke@freshfields.com>, caio@mmso.com.br, "Carolina 
+Galvao" <carolinagalvao@tozzini.com.br>, "Chaim Wachsberger (E-mail)" 
+<chaim.wachsberger@chadbourne.com>, chris.m.j.dutton@si.shell.com, "Christian 
+Huizer (E-mail)" <Christiaan.Huizer@enron.com>, "Claudia Bonelli" 
+<ceb@tozzini.com.br>, claus-michael.koch@kfw.de, "Cliff Rankin" 
+<crankin@velaw.com>, cuiabaclosing@tozzini.com.br, dalaniz@velaw.com, 
+"Daniela Serpa" <daniela.serpa@citicorp.com>, "David Schumacher (E-mail)" 
+<david.schumacher@chadbourne.com>, "Deia Holzmann" 
+<deia.holzmann@citicorp.com>, "DELPINO, Fiorella" 
+<fiorella.delpino@freshfields.com>, "ELORZA, Juliana" 
+<juliana.elorza@freshfields.com>, "Fatima Carr" <fatima.a.carr@bakernet.com>, 
+"Fernando Aguirre (E-mail)" <faguirre@caoba.entelnet.bo>, "Fernando Rojas 
+(E-mail)" <fernando@rojas-lawfirm.com>, fferraz@mmso.com.br, "Frank Kluesener 
+(KfW) (E-mail)" <Frank.Kluesener@kfw.de>, g.g.garcia@enron.com, "gabriela 
+marques" <gabrielamarques@felsberg.com.br>, gordon.combs@stoneweb.com, "Gra?a 
+Pedretti" <gracapedretti@felsberg.com.br>, "haloliver@aol.com" 
+<holiver83@aol.com>, "Heloisa Andrade (E-mail)" <hsfa@tozzini.com.br>, 
+hercules.celescuekci@bakernet.com, hns@maples.candw.ky, "Ivan Bole (BFM&L) 
+(E-mail)" <ib@bfmyl.com.ar>, "Javier Errecondo (BFM&L) (E-mail)" 
+<je@bfmyl.com.ar>, jeff.moore@stoneweb.com, jenp@tozzini.com.br, 
+jlowenthal@mmso.com.br, "Joana Ryan" <joana.ryan@enron.com>, "Joao Francisco 
+Regos" <joaofrancisco.regos@bakernet.com>, "John Barquin" 
+<jbarquin@velaw.com>, "John Novak" <jnovak@enron.com>, 
+jorge.garoufalias@citicorp.com, "Jose Bestard" <jose.bestard@enron.com>, 
+"Jos, Roberto Martins" <j.roberto.martins@bakernet.com>, "Juan Carlos Moreno 
+(E-mail)" <jcmoreno@indacochea.com.bo>, "Karla Wurth (E-mail)" 
+<kwurth@indacochea.com.bo>, "Karl-Heinz Wellmann (KfW) (E-mail)" 
+<Karl-Heinz.Wellmann@kfw.de>, kevin.fitzpatrick@stoneweb.com, "Kruskaia 
+Sierra-Escalante (E-mail)" <kse@chadbourne.com>, "Laine Powell" 
+<Laine.A.Powell@enron.com>, loftsg@brazil.kben.com, "Louis Piscitelli" 
+<louis.piscitelli@citicorp.com>, "Maria del Carmen Ballivian (E-mail)" 
+<mariac@rojas-lawfirm.com>, "Mary Mervenne (E-mail)" <mmerv@opic.gov>, 
+"Matthew Jones (E-mail)" <MNJ@dentonwildesapte.com>, mbeckworth@velaw.com, 
+mike_g._Bignell@sedgwick.com, "Nancy Rivera (E-mail)" <nrive@opic.gov>, 
+"O'BRIEN, Lisa" <lisa.obrien@freshfields.com>, "Pablo Rojas (E-mail)" 
+<pablo@rojas-lawfirm.com>, pandrade@freshfields.com, "Pedro Seraphim" 
+<pgs@tozzini.com.br>, qys@ceibo.entelnet.bo, "RACITI, Melissa" 
+<melissa.raciti@freshfields.com>, "Renata Araujo" <raraujo@velaw.com>, 
+"Ricardo Indacochea (E-mail)" <rindacochea@indacochea.com.bo>, "Ricardo 
+Nogueira" <ricardonogueira@felsberg.com.br>, "Ricardo Sanches" 
+<ricardosanches@felsberg.com.br>, richard.a.lammers@enron.com, 
+rndr@amcham.com.br, rnovais@mmso.com.br, "Rob Gay" <rob.g.gay@enron.com>, 
+"Robert Shapiro (E-mail)" <robert.shapiro@chadbourne.com>, "Roberto La Laina 
+(E-mail)" <rlalaina@tozzini.com.br>, "Rodd Werstil" 
+<Rodd.Werstil@chadbourne.com>, "Rodrigo Sales (E-mail)" 
+<Rodrigo.Sales@BakerNet.com>, russell.ridgway@stoneweb.com, 
+ruth.a.crawford@si.shell.com, sbaratta@sewkis.com, scraw@opic.gov, "SHAKOOR, 
+Fiona" 
+<IMCEAEX-_O=FRESHFIELDS_OU=USA-NEW+20YORK_CN=RECIPIENTS_CN=FSHAKOOR@freshfield
+s.com>, starry@velaw.com, "Stefan Unna (C&P) (E-mail)" 
+<stefan.unna@chadbourne.com>, "Stephen Coats" <scoats@velaw.com>, 
+stephen.gray@enron.com, "Steve Muller" <smiller@velaw.com>, 
+susan.garven@stoneweb.com, susanna.stern@citicorp.com, 
+terri.powers@stoneweb.com, "Thomas Felsberg" 
+<thomasfelsberg@felsberg.com.br>, "Thomas Mahaffey (E-mail)" 
+<tmaha@opic.gov>, turton@brazil.kben.com
+cc:  
+
+Subject: Equity Contribution Agreement
+
+
+This e-mail is confidential and may well also be legally privileged. If you 
+have received it in error, you are on notice of its status.  Please notify us 
+immediately by reply e-mail and then delete this message from your system.  
+Please do not copy it or use it for any purposes, or disclose its contents to 
+any other person:  to do so could be a breach of confidence.  Thank you for 
+your co-operation.  Please contact our
+IT Helpdesk on +44 (0) 20 7936 4000 Ext.2000 or email ITHelp@freshfields.com 
+if you need assistance.
+==================================================
+
+
+
+Attached are clean and blacklined copies of the revised Equity Contribution
+Agreement.  The blacklined copy is marked to show changes from the draft
+thereof dated 11/3/00.
+
+The Lenders did not have the prior opportunity to review the attached and,
+therefore, it remains subject to their comments.
+
+In light of the Thanksgiving holiday next week, the Lenders would prefer to
+discuss the attached during the week of November 27.
+
+Best regards.
+
+
+
+ - COMPARE001.DOC
+ - NY991050085.DOC
