@@ -350,3 +350,183 @@ pyLDAvis.display(lda_visualise)
 
 ![alt tag](https://cloud.githubusercontent.com/assets/20296112/16766481/c30b51f2-483a-11e6-89cc-98fcfb6f764a.png)
 
+We use the colour pallate called Tableau_20 that contains 20 different colours. We assign these to seperate topics. If anyone should have need for more than 20 topics, please modify the code below accordingly. 
+
+```python
+from palettable.tableau import Tableau_20
+
+topic_colour_gen = []
+for i in range(0,num_topics):
+    topic_colour_gen.append((i, Tableau_20.hex_colors[i]))
+    
+topic_colours = dict(topic_colour_gen)
+```
+
+The function below was created to filter through a specific email and highlight the relevant words, according to topic. Further below, a function is implemented to determine the topic distributions of a specific employee - the method here makes use of the dictionary created at the start, whereas the function below reanalyses a specific email. More trust should be placed in the function that assigns the topics to an employee than the function below. This function is very experimental and any suggestion are welcome. 
+
+```python
+from nltk.stem.wordnet import WordNetLemmatizer
+wordnet_lemmatizer = WordNetLemmatizer()
+from collections import defaultdict
+import re
+
+doc = ''
+
+def match_words(word):
+    word_edit = word.lower()
+    try:
+        word_edit = tokenizer.tokenize(word_edit)[0]
+    except:
+        pass
+    return wordnet_lemmatizer.lemmatize(word_edit)
+    
+def build_html_colour(word, topic):
+    #return " <font color=" + str(topic_colours[topic]) + "'>" + word + "</font> "
+    return ' <span style="background-color: ' + str(topic_colours[topic])  +'">' + word + '</span>'
+
+def read_doc(doc):
+    chdir('/path/to/text/files')
+    doc = open(str(doc),'r').read()
+    
+    # Variables so recalculation is not necessary
+    doc_split = doc.split()
+    
+    # Build dictionary of topic's distribution for a given document
+    num_topics_weight = 0
+    Topics = defaultdict(int)
+    for word in doc_split:
+        word_edit = match_words(word)
+        try:
+            word_topics = ldamodel.get_term_topics(word_edit)
+            if word_topics:
+                for topic in word_topics:
+                    Topics[topic[0]] += topic[1]
+                    num_topics_weight += topic[1]            
+        except:
+            pass
+    # Find topic info
+    # Append Topic, number of words in document from given topic and doc percentage of topic
+    Topic_info = []
+    for topic in Topics:
+        Topic_info.append([topic, Topics[topic], round((Topics[topic]/num_topics_weight)*100)]) 
+    
+    # Topic info for three most prevalent topics for a given document
+    Topic_info_top3 = []
+    Topic_info_copy = []
+    for i in Topic_info:
+        Topic_info_copy.append(i)
+    
+    for i in range(0,3):
+        max = Topic_info_copy[0]
+        for topic in Topic_info_copy:
+            if topic[2] > max[2]:
+                max = topic
+        Topic_info_top3.append(max)
+        Topic_info_copy.remove(max)
+        
+    
+    # Format the document according to topics
+    for word in doc_split:
+        word_edit = match_words(word)
+        try:
+            topic = ldamodel.get_term_topics(word_edit)[0][0]
+            if (topic == Topic_info_top3[0][0]) or (topic == Topic_info_top3[1][0]) or (topic == Topic_info_top3[2][0]):
+                doc = doc.replace( ' ' + word + '', build_html_colour(word,topic))
+                #doc = doc.replace( '' + word + ' ', build_html_colour(word,topic))
+        except:
+            pass
+    doc = re.sub(r'\n','<br>',doc)
+    
+    Output = []
+    for item in Topic_info_top3:
+        colour = build_html_colour('Topic ' + str(item[0]), item[0])
+        topic_info = colour + ': ' + str(item[2]) + '% ' + str(Topic_words[item[0]])
+        Output.append(topic_info)
+    return Output, doc
+```
+
+HTML is used to add colour to the printed text. See [here](https://jakevdp.github.io/blog/2013/06/01/ipython-notebook-javascript-python-communication/) for more information. Note that the function above and the HTML implementation below was created for use within the Jupyter Notebook. Also make sure to change the directory in the function above to point to where the email to be analysed is stored. Below, assign the name of the file to the variable doc.  The 3rd email by dickson-s has been used as an example here. 
+
+```python
+#Input the document we want to read
+doc = 'dickson-s_3.'
+
+from IPython.display import HTML
+
+input_form = """
+<div style="background-color:white; border:solid black; width:1100px; padding:20px;">
+<p>"""+read_doc(doc)[0][0]+"""</p>
+<p>"""+read_doc(doc)[0][1]+"""</p>
+<p>"""+read_doc(doc)[0][2]+"""</p>
+<p>"""+read_doc(doc)[1]+"""</p>
+</div>
+"""
+
+HTML(input_form)
+```
+[!alt tag](https://cloud.githubusercontent.com/assets/20296112/16767476/f1fa662e-483f-11e6-9bc3-e5d81ea16d4d.png)
+
+Below, we create two functions, namely, get_person_topics and get_topic_persons.
+
+get_person_topics takes in a specific person as a string and returns a dictionary with a ratio value (out of 1) for each of the 20 topics. This indicates the prevalance of each of the topics as a percentage for a given person.
+
+get_topic_persons takes in a topic as an integer and returns a dictionary with a ratio value (out of 1) for all the employees. This indicates which employees fall under a specific topic. 
+
+```python
+from collections import defaultdict
+
+def get_person_topics(person):
+    person_topics = defaultdict(int)
+    total = 0
+    for word in docs_name_dict[person]:
+        try:
+            term_topics = ldamodel.get_term_topics(word)
+            if term_topics:
+                for topic_tuple in term_topics:
+                    person_topics[topic_tuple[0]] += topic_tuple[1]
+                    total += topic_tuple[1]
+        except:
+            pass
+        
+    #scale the values
+    for person in person_topics:
+        person_topics[person] = person_topics[person]/total
+    return person_topics
+
+def get_topic_persons(topic):
+    specific_topic_persons = defaultdict(int)
+    
+    total = 0
+    for person in docs_name_dict:
+        person_topics = get_person_topics(person)
+        person_value = person_topics[topic]
+        specific_topic_persons[person] += person_value
+        total += person_value
+    
+    
+    #Scale the numbers in the dictionary to a percentage
+    for person in docs_name_dict:
+        specific_topic_persons[person] = specific_topic_persons[person]/total
+        
+    return specific_topic_persons
+```
+We now see which person falls under a given topic the 'most' as well as which topic falls under a given person the 'most'. With some experimentation, it seems that the data normalises given the large number of emails and fairly large number of employees.
+
+```python
+# Finding top person for a given topic
+
+topic_person = get_topic_persons(10)
+maximum_person = max(topic_person.keys(), key=(lambda key: topic_person[key]))
+print(maximum_person, '{0:.2%}'.format(topic_person[maximum_person]))
+```
+```python
+# Finding top topic for a given person
+
+person_topic = get_person_topics('allen-p')
+maximum_topic = max(person_topic.keys(), key=(lambda key: person_topic[key]))
+print(maximum_topic, '{0:.2%}'.format(person_topic[maximum_topic]))
+```
+
+To see the data visualised, click [here](http://peter-thompson.github.io), where each circle represents an employee. The size of the bubbles are determined by the number of relevant words used by each employee. Upon clicking on a specific employee, a donut chart appears that shows the topic distribution for the given employee. This is determined by using the above function get_person_topics(). Further, if one clicks on a given topic, a few key words for that topic appears. 
+
+The visualisation was done using D3. It must be noted that the code is available, HOWEVER, some unfortunate hardcoding has taken place. The code is thus fairly tailored for 20 topics (and is all but neatly laid out). 
