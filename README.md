@@ -3,7 +3,7 @@ The Enron database (specifically the emails in the employee's 'sent' directories
 The [Gensim](https://radimrehurek.com/gensim/index.html) library is used to perform the LDA analysis. This provides a number of key
 words for each of the 20 topics considered. From here, custom functions are implemented in order to analyse the prevalence
 of key words within a document of the user's choice. Functions are also created to determine the key topics for a specific
-employee as well as to determine the employees of note for a given topic. The entire analysis was done by using a Jupyter Notebook and Python 3.5. Please see **Enron_unfiltered_sent_2.ipynb for the final Notebook used. Also click [here](peter-thompson.github.io) for a visual representation of the data. 
+employee as well as to determine the employees of note for a given topic. The entire analysis was done by using a Jupyter Notebook and Python 3.5. Please see **Enron_unfiltered_sent_2.ipynb** for the final Notebook used. Also click [here](peter-thompson.github.io) for a visual representation of the data. 
 
 ## Setting up & installing packages
 
@@ -451,7 +451,7 @@ def read_doc(doc):
     return Output, doc
 ```
 
-HTML is used to add colour to the printed text. See [here](https://jakevdp.github.io/blog/2013/06/01/ipython-notebook-javascript-python-communication/) for more information. Note that the function above and the HTML implementation below was created for use within the Jupyter Notebook. Also make sure to change the directory in the function above to point to where the email to be analysed is stored. Below, assign the name of the file to the variable `doc`.  The 3rd email by **dickson-s has been used as an example here. 
+HTML is used to add colour to the printed text. See [here](https://jakevdp.github.io/blog/2013/06/01/ipython-notebook-javascript-python-communication/) for more information. Note that the function above and the HTML implementation below was created for use within the Jupyter Notebook. Also make sure to change the directory in the function above to point to where the email to be analysed is stored. Below, assign the name of the file to the variable `doc`.  The 3rd email by **dickson-s** has been used as an example here. 
 
 ```python
 #Input the document we want to read
