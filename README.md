@@ -1,4 +1,4 @@
-# Topip modelling using LDA
+# Topic modelling using LDA
 The Enron database (specifically the emails in the employee's 'sent' directories) is analysed using Latent Dirichlet allocation (LDA).
 The [Gensim](https://radimrehurek.com/gensim/index.html) library is used to perform the LDA analysis. This provides a number of key
 words for each of the 20 topics considered. From here, custom functions are implemented in order to analyse the prevalence
