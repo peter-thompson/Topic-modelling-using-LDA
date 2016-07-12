@@ -15,7 +15,11 @@ Further, in order to use the lemmatizer locally, run Python and type the command
 import nltk
 nltk.download()
 ```
-whereafer select the Corpora tab and download wordnet. 
+whereafer select the Corpora tab and download wordnet.  In order to visualise the results using the [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/readme.html#installation) package, make sure to install pyLDAvis.
+
+```bash
+pip install pyldavis
+```
 
 We are now ready to start the LDA analysis of the Enron dataset.
 
@@ -233,8 +237,7 @@ for i in range(0,len(List)):
     print('\n' + '-'*100 + '\n')
 ```
 Here is the output with the given number of topics and passes:
-```latex
-\begin{verbatim}
+```
 Topic 0: 
 john ect future member broker brent click nymex board jason
 
@@ -332,5 +335,18 @@ know let get jeff need want like thanks call think
 
 Topic 19: 
 message intended information email communication may received use recipient error
-\end{verbatim}
 ```
+We will now proceed to visualise the data above by using the [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/index.html) package.
+
+```python
+import warnings
+warnings.filterwarnings('ignore')
+
+import pyLDAvis.gensim
+
+lda_visualise = pyLDAvis.gensim.prepare(ldamodel, corpus, dictionary)
+pyLDAvis.display(lda_visualise)
+```
+
+![alt tag](https://cloud.githubusercontent.com/assets/20296112/16766481/c30b51f2-483a-11e6-89cc-98fcfb6f764a.png)
+
