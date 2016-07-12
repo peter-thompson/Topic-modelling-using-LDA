@@ -9,6 +9,12 @@ employee as well as to determine the employees of note for a given topic. The en
 
 Firsty, make sure to download the Enron dataset [here](https://www.cs.cmu.edu/~./enron/) and install the Python packages, [gensim](https://radimrehurek.com/gensim/install.html), [NLTK](http://www.nltk.org/install.html) and [stop-words](https://pypi.python.org/pypi/stop-words). 
 
+```bash
+pip install gensim
+pip install nltk
+pip install stop-words
+```
+
 Further, in order to use the lemmatizer locally, run Python and type the commands:
 
 ```python
