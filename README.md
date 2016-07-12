@@ -470,7 +470,7 @@ input_form = """
 
 HTML(input_form)
 ```
-[!alt tag](https://cloud.githubusercontent.com/assets/20296112/16767476/f1fa662e-483f-11e6-9bc3-e5d81ea16d4d.png)
+![alt tag](https://cloud.githubusercontent.com/assets/20296112/16767476/f1fa662e-483f-11e6-9bc3-e5d81ea16d4d.png)
 
 Below, we create two functions, namely, get_person_topics and get_topic_persons.
 
