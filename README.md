@@ -3,7 +3,7 @@ The Enron database (specifically the emails in the employee's 'sent' directories
 The [Gensim](https://radimrehurek.com/gensim/index.html) library is used to perform the LDA analysis. This provides a number of key
 words for each of the 20 topics considered. From here, custom functions are implemented in order to analyse the prevalence
 of key words within a document of the user's choice. Functions are also created to determine the key topics for a specific
-employee as well as to determine the employees of note for a given topic. The entire analysis was done by using a Jupyter Notebook and Python 3.5. Please see Enron_unfiltered_sent_2.ipynb for the final Notebook used. Also click [here](peter-thompson.github.io) for a visual representation of the data. 
+employee as well as to determine the employees of note for a given topic. The entire analysis was done by using a Jupyter Notebook and Python 3.5. Please see **Enron_unfiltered_sent_2.ipynb for the final Notebook used. Also click [here](peter-thompson.github.io) for a visual representation of the data. 
 
 ## Setting up & installing packages
 
@@ -62,7 +62,7 @@ re4 = re.compile('( . )|\s+')
 
 We now build a list of strings - each string being an email (document). 
 Each document is filtered according to the regular expressions above. 
-We also build a dictionary, namely, docs_num_dict that stores for each iteration of a name, 
+We also build a dictionary, namely, `docs_num_dict` that stores for each iteration of a name, 
 the corresponding name and as well as a list of the filtered text.
 
 Take note to input the path to the enron dataset directory.
@@ -106,7 +106,7 @@ The stemmer generally cuts off prefixes of words according to some set rules. Th
 In general, the lemmatizer will have preference of use. 
 
 While creating a new 'texts' variable that stores the filtered documents, 
-we also edit the docs_num_dict to update the words according to the tokenize,stop word, 
+we also edit the `docs_num_dict` to update the words according to the tokenize,stop word, 
 emmatize procedure.
 
 ## Using the Lemmatizer
@@ -156,7 +156,7 @@ for i in range(0,len(docs_num_dict.items())):
     docs_num_dict[i][1] = new_docs_num_dict_1
 
 ```
-We now build the dictionary of dictionaries, docs_name_dict. The dictinary associates to the names of each employee, a dictionary that stores all the words used by the given person, as well as the number of times they used each of these words. 
+We now build the dictionary of dictionaries, `docs_name_dict`. The dictinary associates to the names of each employee, a dictionary that stores all the words used by the given person, as well as the number of times they used each of these words. 
 
 ```python
 from collections import defaultdict
@@ -218,7 +218,7 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 # Constructing the model
 ldamodel = models.ldamodel.LdaModel(corpus, num_topics=20, id2word = dictionary, passes=350)
 ```
-It is strongly advised to save the ldamodel - 5 hours is a fairly long time!
+It is strongly advised to save the `ldamodel` - 5 hours is a fairly long time!
 
 ```python
 # Save the ldamodel
@@ -356,7 +356,7 @@ pyLDAvis.display(lda_visualise)
 
 ![alt tag](https://cloud.githubusercontent.com/assets/20296112/16766481/c30b51f2-483a-11e6-89cc-98fcfb6f764a.png)
 
-We use the colour pallate called Tableau_20 that contains 20 different colours. We assign these to seperate topics. If anyone should have need for more than 20 topics, please modify the code below accordingly. 
+We use the colour pallate called `Tableau_20` that contains 20 different colours. We assign these to seperate topics. If anyone should have need for more than 20 topics, please modify the code below accordingly. 
 
 ```python
 from palettable.tableau import Tableau_20
@@ -451,7 +451,7 @@ def read_doc(doc):
     return Output, doc
 ```
 
-HTML is used to add colour to the printed text. See [here](https://jakevdp.github.io/blog/2013/06/01/ipython-notebook-javascript-python-communication/) for more information. Note that the function above and the HTML implementation below was created for use within the Jupyter Notebook. Also make sure to change the directory in the function above to point to where the email to be analysed is stored. Below, assign the name of the file to the variable doc.  The 3rd email by dickson-s has been used as an example here. 
+HTML is used to add colour to the printed text. See [here](https://jakevdp.github.io/blog/2013/06/01/ipython-notebook-javascript-python-communication/) for more information. Note that the function above and the HTML implementation below was created for use within the Jupyter Notebook. Also make sure to change the directory in the function above to point to where the email to be analysed is stored. Below, assign the name of the file to the variable `doc`.  The 3rd email by **dickson-s has been used as an example here. 
 
 ```python
 #Input the document we want to read
@@ -472,11 +472,11 @@ HTML(input_form)
 ```
 ![alt tag](https://cloud.githubusercontent.com/assets/20296112/16767476/f1fa662e-483f-11e6-9bc3-e5d81ea16d4d.png)
 
-Below, we create two functions, namely, get_person_topics and get_topic_persons.
+Below, we create two functions, namely, `get_person_topics()` and `get_topic_persons()`.
 
-get_person_topics takes in a specific person as a string and returns a dictionary with a ratio value (out of 1) for each of the 20 topics. This indicates the prevalance of each of the topics as a percentage for a given person.
+`get_person_topics()` takes in a specific person as a string and returns a dictionary with a ratio value (out of 1) for each of the 20 topics. This indicates the prevalance of each of the topics as a percentage for a given person.
 
-get_topic_persons takes in a topic as an integer and returns a dictionary with a ratio value (out of 1) for all the employees. This indicates which employees fall under a specific topic. 
+`get_topic_persons()` takes in a topic as an integer and returns a dictionary with a ratio value (out of 1) for all the employees. This indicates which employees fall under a specific topic. 
 
 ```python
 from collections import defaultdict
@@ -533,6 +533,6 @@ maximum_topic = max(person_topic.keys(), key=(lambda key: person_topic[key]))
 print(maximum_topic, '{0:.2%}'.format(person_topic[maximum_topic]))
 ```
 
-To see the data visualised, click [here](http://peter-thompson.github.io), where each circle represents an employee. The size of the bubbles are determined by the number of relevant words used by each employee. Upon clicking on a specific employee, a donut chart appears that shows the topic distribution for the given employee. This is determined by using the above function get_person_topics(). Further, if one clicks on a given topic, a few key words for that topic appears. 
+To see the data visualised, click [here](http://peter-thompson.github.io), where each circle represents an employee. The size of the bubbles are determined by the number of relevant words used by each employee. Upon clicking on a specific employee, a donut chart appears that shows the topic distribution for the given employee. This is determined by using the above function `get_person_topics()`. Further, if one clicks on a given topic, a few key words for that topic appears. 
 
 The visualisation was done using D3. It must be noted that the code is available, HOWEVER, some unfortunate hardcoding has taken place. The code is thus fairly tailored for 20 topics (and is all but neatly laid out). 
