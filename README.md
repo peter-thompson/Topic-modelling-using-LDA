@@ -3,7 +3,7 @@ The Enron database (specifically the emails in the employee's 'sent' directories
 The [Gensim](https://radimrehurek.com/gensim/index.html) library is used to perform the LDA analysis. This provides a number of key
 words for each of the 20 topics considered. From here, custom functions are implemented in order to analyse the prevalence
 of key words within a document of the user's choice. Functions are also created to determine the key topics for a specific
-employee as well as to determine the employees of note for a given topic. The entire analysis was done by using a Jupyter Notebook and Python 3.5. Please see **Enron_unfiltered_sent_2.ipynb** for the final Notebook used. Also, click [here](https://peter-thompson.github.io/) for a visual representation of the data. 
+employee as well as to determine the employees of note for a given topic. The entire analysis was done by using a Jupyter Notebook and Python 3.5. Please see **Enron.ipynb** for the final Notebook used. Also, click [here](https://peter-thompson.github.io/) for a visual representation of the data. 
 
 ## Setting up & installing packages
 
