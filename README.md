@@ -172,7 +172,7 @@ for i in range(0,len(docs_num_dict.items())):
 docs_name_dict = dict(docs_name_dict)
 ```
 
-We now want to remove the words from our documents that cause clutter. We will remove all the words that appear in more than 20% of documents as well as removing all the words that occur in less than 4 of the documents. We have a dictionary that counts the number of times a word in present across all the ```latex\pm57000``` documents. 
+We now want to remove the words from our documents that cause clutter. We will remove all the words that appear in more than 20% of documents as well as removing all the words that occur in less than 4 of the documents. We have a dictionary that counts the number of times a word in present across all the (plus-minus) 57000 documents. 
 
 To further enhance the quality of the text we analyse, the loops below remove all words of length 1 or 2. 
 
