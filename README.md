@@ -34,30 +34,26 @@ We are now ready to start the LDA analysis of the Enron dataset.
 We are going to place all the emails of each user into one large list. In order to utalise the LDA algorithm we require there to me multiple documents. The obvious question that arises is whether to consider each email as a seperate document, or to consider the collection of each user's emails as a seperate document. For example:
 Consider person  A  has emails  A1, A2, A3  and person  B  has emails  B1  and  B2 . Then we can create a list that is L = [A1, A2, A3, B1, B2] or L = [A1A2A3, B1B2]. For now, all the emails are going to be treated as seperate documents.
 Once the LDA algorithm has been implemented, we want to be able to list all the documents that fall under a given catagory.
-We now set up the regular expressions to remove the 'clutter' from the emails. (Note, they are purposefully long to avoid successive searches through large data)
+We now set up the regular expressions to remove the 'clutter' from the emails. (Note, there is an alternate set in the file **Enron_a**)
 
 ```python
 from os import listdir, chdir
 import re
 
+re0 = re.compile('>')
 re1 = re.compile('(Message-ID(.*?\n)*X-FileName.*?\n)|'
                  '(To:(.*?\n)*?Subject.*?\n)|'
                  '(< (Message-ID(.*?\n)*.*?X-FileName.*?\n))')
-re2 = re.compile('<|'
-                 '>|'
-                 '(---(.*?\n)?.*?---)|'
-                 '(\*\*[.*?\s]\*\*)|'
-                 '(.*?:(\s|(.*?\s)|))|'
-                 '(\(\d+\))|'
-                 '(\s.*?\..*?\s)|'
-                 '(\s.*?\_.*?\s)|'
-                 '(\s.*?\-.*?\s)|'
-                 '(\s.*\/.*?\s)|'
-                 '(\s.*@.*?\s)|'
-                 '([\d\-\(\)\\\/\#\=]+(\s|\.))|'
-                 '(\n.*?\s)|\d')
-re3 = re.compile('\\\'')
-re4 = re.compile('( . )|\s+')
+re2 = re.compile('(.+)@(.+)') # Remove emails
+re3 = re.compile('\s(-----)(.*?)(-----)\s', re.DOTALL)
+re4 = re.compile('''\s(\*\*\*\*\*)(.*?)(\*\*\*\*\*)\s''', re.DOTALL)
+re5 = re.compile('\s(_____)(.*?)(_____)\s', re.DOTALL)
+re6 = re.compile('\n( )*-.*')
+re7 = re.compile('\n( )*\d.*')
+re8 = re.compile('(\n( )*[\w]+($|( )*\n))|(\n( )*(\w)+(\s)+(\w)+(( )*\n)|$)|(\n( )*(\w)+(\s)+(\w)+(\s)+(\w)+(( )*\n)|$)')
+re9 = re.compile('.*orwarded.*')
+re10 = re.compile('From.*|Sent.*|cc.*|Subject.*|Embedded.*|http.*|\w+\.\w+|.*\d\d/\d\d/\d\d\d\d.*')
+re11 = re.compile(' [\d:;,.]+ ')
 ```
 
 We now build a list of strings - each string being an email (document). 
@@ -73,23 +69,31 @@ from collections import defaultdict
 docs = []
 docs_num_dict = [] # Stores email sender's name and number
 
-chdir('path-to-enron')
+chdir('/home/peter/Downloads/enron')
 # For each user we extract all the emails in their inbox
 
 names = [i for i in listdir()]
 m = 0
 for name in names:
-    sent = 'path-to-enron' + str(name) + '/sent'   
+    sent = '/home/peter/Downloads/enron/' + str(name) + '/sent'   
     try: 
         chdir(sent)
         d = []
         for email in listdir():          
             text = open(email,'r').read()
             # Regular expressions are used below to remove 'clutter'
+            text = re.sub(re0, ' ', text)
             text = re.sub(re1, ' ', text)
             text = re.sub(re2, ' ', text)
             text = re.sub(re3, ' ', text)
             text = re.sub(re4, ' ', text)
+            text = re.sub(re5, ' ', text)
+            text = re.sub(re6, ' ', text)
+            text = re.sub(re7, ' ', text)
+            text = re.sub(re8, ' ', text)
+            text = re.sub(re9, ' ', text)
+            text = re.sub(re10, ' ', text)
+            text = re.sub(re11, ' ', text)
             docs.append(text)
             d.append(text)
         docs_num_dict.append((m,[name,d]))
@@ -202,9 +206,9 @@ for doc in temp_texts:
     texts.append(temp_doc)
 ```
 
-Below, we construct the document term matrix whereafter the fairly lengthy process of constructing the model takes place. Thus far the model seems be linear. With a single pass, the model takes just upward of a minute to execute, whereas for 5 passes, the model takes roughly 5.5 minutes.
+Below, we construct the document term matrix whereafter the fairly lengthy process of constructing the model takes place. Thus far the model seems be linear. With a single pass, the model takes just upward of a minute to execute, whereas for 5 passes, the model takes roughly 7 minutes.
 
-The model was run for 350 passes and took 316 minutes to execute. 
+The model was run for 350 passes and took 450 minutes to execute. 
 
 ```python
 # Constructing a document-term matrix
@@ -218,7 +222,7 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 # Constructing the model
 ldamodel = models.ldamodel.LdaModel(corpus, num_topics=20, id2word = dictionary, passes=350)
 ```
-It is strongly advised to save the `ldamodel` - 5 hours is a fairly long time!
+It is strongly advised to save the `ldamodel` - 7 hours is a fairly long time!
 
 ```python
 # Save the ldamodel
@@ -245,102 +249,102 @@ for i in range(0,len(List)):
 Here is the output with the given number of topics and passes:
 ```
 Topic 0: 
-john ect future member broker brent click nymex board jason
+california state said utility energy price market electricity davis rate
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 1: 
-contract party agreement language may transaction issue term credit payment
+way web site houston address center hotel member click city
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 2: 
-power california state energy market said utility price electricity cost
+received content date type george com mail version man gov
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 3: 
-just get think going one dont day see good time
+713 north america corp houston texas fax phone 853 646
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 4: 
-city new university houston school student producer san class administration
+game love saturday night friend year school god life little
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 5: 
-information need also project access employee process provide like issue
+year say now even fact meter without vote many point
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 6: 
-agreement attached draft copy document master need change letter form
+message mail information intended confidential email recipient copy received error
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 7: 
-fax texas street smith sara houston shackleton phone legal perlingiere
+facility shall request permit approval bid arbitration unit brazil auction
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 8: 
-tax sherri corp court loan land story property judge meter
+credit sara master isda trade trading transaction legal swap counterparty
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 9: 
-gas company energy trading power natural product trade financial pipeline
+market stock share trading price year option value week future
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 10: 
-vince forwarded love god game sound year man one play
+gas price month contract volume capacity pipeline rate per delivery
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 11: 
-meeting conference call week friday next thursday time monday schedule
+energy company service gas inc marketing duke corporation natural corp
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 12: 
-chris gas ben book daily report volume thanks forwarded need
+book name desk report number changed change correct invoice trader
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 13: 
-business mark group risk management market new service global trading
+business group employee team mark john ena global resume president
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 14: 
-deal forwarded thanks delainey desk contract tom mike eol zone
+information risk system project data service process provide management report
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 15: 
-price shall day option per month date value rate period
+meeting week friday monday date thursday office next schedule conference
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 16: 
-internet kate investor software computer www buy auction world article
+contract issue party amount order payment language transaction term section
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 17: 
-jeff debra john bill richard robert kay dasovich david bob
+jeff best group forward meeting presentation regard interested look help
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 18: 
-know let get jeff need want like thanks call think
+just think going want don good back work see make
 
 ----------------------------------------------------------------------------------------------------
 
 Topic 19: 
-message intended information email communication may received use recipient error
+attached draft change comment file see review copy document question
 ```
 We will now proceed to visualise the data above by using the [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/index.html) package.
 
@@ -470,7 +474,7 @@ input_form = """
 
 HTML(input_form)
 ```
-![alt tag](https://cloud.githubusercontent.com/assets/20296112/16767476/f1fa662e-483f-11e6-9bc3-e5d81ea16d4d.png)
+![alt tag](https://cloud.githubusercontent.com/assets/20296112/16832138/349917f4-49a9-11e6-8fc2-fdd48854440d.png)
 
 Below, we create two functions, namely, `get_person_topics()` and `get_topic_persons()`.
 
