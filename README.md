@@ -357,8 +357,7 @@ import pyLDAvis.gensim
 lda_visualise = pyLDAvis.gensim.prepare(ldamodel, corpus, dictionary)
 pyLDAvis.display(lda_visualise)
 ```
-
-![alt tag](https://cloud.githubusercontent.com/assets/20296112/16766481/c30b51f2-483a-11e6-89cc-98fcfb6f764a.png)
+<!--![alt tag](https://cloud.githubusercontent.com/assets/20296112/16766481/c30b51f2-483a-11e6-89cc-98fcfb6f764a.png)-->
 ![alt tag](https://cloud.githubusercontent.com/assets/20296112/16837109/8c90f202-49c1-11e6-8fd0-398aba3d611d.gif)
 
 We use the colour pallate called `Tableau_20` that contains 20 different colours. We assign these to seperate topics. If anyone should have need for more than 20 topics, please modify the code below accordingly. 
